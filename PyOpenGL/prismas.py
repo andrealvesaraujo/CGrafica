@@ -4,10 +4,15 @@ from OpenGL.GL import *
  
 import math
    
+h=2
+n=10
+r=2
+
 cores = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5))
  
-def prismas(h,n,r):
+def prismas():
     
+
     vertices = []
     a = 2*math.pi/n
     for i in range(0,n):
@@ -57,7 +62,7 @@ def desenha():
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     #glTranslatef(0,0,0)
     glRotatef(2,1,0,0);
-    prismas(2,6,3)
+    prismas()
     glutSwapBuffers()
     
 def timer(i):
