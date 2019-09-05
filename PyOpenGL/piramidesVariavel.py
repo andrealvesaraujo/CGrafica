@@ -3,63 +3,52 @@ from OpenGL.GLU import *
 from OpenGL.GL import *
  
 import math
- 
 
 
-  
+
+   
 cores = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5))
  
-def piramideVariavel():
-    pontos = []
-    linhas = []
-    faces = []
-    n=8
-    r=2
-    a = 2*math.pi/n
-    for i in range(0,n):
-        x = r*math.cos(i*a)
-        y = 0
-        z = r*math.sin(i*a)
-        pontos += [[x,y,z]]
+def piramideVariavel(h,n,r):
+	
+	
+	vertices = [[0,h,0]]
+	a = 2*math.pi/n
+	for i in range(0,n):
+		x = r*math.cos(i*a)
+		y = 0
+		z = r*math.sin(i*a)
+		vertices += [[x,y,z]]
 
-    glBegin(GL_TRIANGLE_FAN)
-    central=(0,0,0)
-    glColor3f(0,0,1)
-    glVertex3fv(central)
-    i=0
-    for ponto in pontos:
-        glColor3fv(cores[i%len(cores)])
-        glVertex3fv(ponto)
-        i+=1    
-    glVertex3fv(pontos[0])    
-    glEnd()
-    
-    
-    j=0
-    topo=(0,5,0)
-    for j in range(0,n):
-        faces += (topo,j,j+1)
-        if ((j+1) == n):
-            faces+=(topo,j,0)
-    
+	faces = []
+	for i in range(1,n+1):
+		if(i==n):
+			faces += [[0,i,1]]
+		else:
+			faces += [[0,i,(i+1)]]
 
-    #i=0     
-    #glBegin(GL_TRIANGLES)   
-    #for face in faces:
-     #   glColor3fv(cores[i])
-      #  for v in face:
-       #     glVertex3fv(pontos[v])
-       # i+=1
-    #glEnd()
+	k = 0
+	glBegin(GL_TRIANGLES)
+	for face in faces:
+		glColor3fv(cores[k%len(cores)])
+		k += 1
+		for v in face:
+			glVertex3fv(vertices[v])
+	glEnd()
 
+	
+	glBegin(GL_POLYGON)
+	glColor3fv(cores[1])
+	for v in range(1,n+1):
+		glVertex3fv(vertices[v])
+	glEnd()
  
 def desenha():
 
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     #glTranslatef(0,0,0)
     glRotatef(2,1,0,0);
-    #piramideFixo()
-    piramideVariavel()
+    piramideVariavel(2,10,3)
     glutSwapBuffers()
     
 def timer(i):
