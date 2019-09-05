@@ -2,63 +2,62 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from OpenGL.GL import *
  
-vertices = (
-    ( -1,0,1),
-    ( -1,0,-1),
-    ( 1,0,1),
-    ( 1,0,-1),
-    (0,4,0)
-    )
- 
-linhas = (
-    (0,1),
-    (0,2),
-    (0,4),
-    (1,2),
-    (1,3),
-    (1,4),
-    (2,3),
-    (2,4),
-    (3,4)    
-    )
- 
-faces = (
-    (0,1,2),
-    (0,1,4),
-    (0,2,4),
-    (1,3,4),
-    (1,2,3),
-    (2,3,4) 
-    )
- 
+import math
+   
 cores = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5))
  
-def piramideFixo():
-    glBegin(GL_TRIANGLES)
-    i = 0
+def prismas(h,n,r):
+    
+    vertices = []
+    a = 2*math.pi/n
+    for i in range(0,n):
+        x = r*math.cos(i*a)
+        y = 0
+        z = r*math.sin(i*a)
+        vertices += [[x,y,z]] #prencheu a base de baixo
+    for i in range(0,n):
+        x = r*math.cos(i*a)
+        y = h
+        z = r*math.sin(i*a)
+        vertices += [[x,y,z]] #prencheu a base de cima
+
+    print(vertices)
+    
+    faces = []
+    for i in range(0,n):
+        if(i==n-1):
+            faces += [[i,0,n,2*n-1]]
+        else:
+            faces += [[i,i+1,n+i+1,n+i]]
+
+    k=0
+    glBegin(GL_QUADS)
     for face in faces:
-        glColor3fv(cores[i])
-        for vertex in face:
-            #glColor3fv(cores[vertex])
-            glVertex3fv(vertices[vertex])
-        i = i+1
+        glColor3fv(cores[k%len(cores)])
+        k += 1
+        for v in face:
+            glVertex3fv(vertices[v])
     glEnd()
- 
-    glColor3fv((0,0.5,0))
-    glBegin(GL_LINES)
-    for linha in linhas:
-        for vertice in linha:
-            glVertex3fv(vertices[vertice])
+
+    glBegin(GL_POLYGON)
+    glColor3fv(cores[1])
+    for v in range(0,n):
+        glVertex3fv(vertices[v])
     glEnd()
- 
- 
- 
+
+    glBegin(GL_POLYGON)
+    glColor3fv(cores[4])
+    for x in range(n,2*n):
+        glVertex3fv(vertices[x])
+    glEnd()
+    
+       
 def desenha():
     global a
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     #glTranslatef(0,0,0)
     glRotatef(2,1,0,0);
-    piramideFixo()
+    prismas(2,6,3)
     glutSwapBuffers()
     
 def timer(i):
