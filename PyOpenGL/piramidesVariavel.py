@@ -4,7 +4,9 @@ from OpenGL.GL import *
  
 import math
 
-
+h=2
+n=10
+r=2
 
    
 cores = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5))
@@ -48,7 +50,7 @@ def desenha():
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
     #glTranslatef(0,0,0)
     glRotatef(2,1,0,0);
-    piramideVariavel(2,10,3)
+    piramideVariavel()
     glutSwapBuffers()
     
 def timer(i):
