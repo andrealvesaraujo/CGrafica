@@ -11,7 +11,7 @@ r=2
    
 cores = ( (1,0,0),(1,1,0),(0,1,0),(0,1,1),(0,0,1),(1,0,1),(0.5,1,1),(1,0,0.5))
  
-def piramideVariavel(h,n,r):
+def piramideVariavel():
 	
 	
 	vertices = [[0,h,0]]
@@ -61,7 +61,7 @@ def timer(i):
 glutInit(sys.argv)
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE)
 glutInitWindowSize(800,600)
-glutCreateWindow("CUBO")
+glutCreateWindow("PiramideVariavel")
 glutDisplayFunc(desenha)
 glEnable(GL_MULTISAMPLE)
 glEnable(GL_DEPTH_TEST)

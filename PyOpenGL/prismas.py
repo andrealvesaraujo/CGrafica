@@ -26,7 +26,7 @@ def prismas():
         z = r*math.sin(i*a)
         vertices += [[x,y,z]] #prencheu a base de cima
 
-    print(vertices)
+    
     
     faces = []
     for i in range(0,n):
@@ -73,7 +73,7 @@ def timer(i):
 glutInit(sys.argv)
 glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE)
 glutInitWindowSize(800,600)
-glutCreateWindow("CUBO")
+glutCreateWindow("Prisma")
 glutDisplayFunc(desenha)
 glEnable(GL_MULTISAMPLE)
 glEnable(GL_DEPTH_TEST)
