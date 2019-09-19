@@ -25,3 +25,13 @@ Só funcionam para python 2+
 	3.r --> Raio da circunferencias.
 
 	Para rodar execute o comando: python prismas.py
+
+# 4.Esfera Pontilhada
+	Esse programa mostra uma esfera de 50 pontos no "n" e "m" girando em torno do eixo z.
+
+	Os parametros que podem ser variados estão no topo do codigo e são:
+	1.n --> Quantidade de pontos que varia com teta
+	2.m --> Quantidade de pontos que varia com phi
+	3.r --> Raio da circunferencias.
+
+	Para rodar execute o comando: python esferaPontilhado.py
