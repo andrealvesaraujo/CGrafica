@@ -4,16 +4,16 @@ from OpenGL.GL import *
  
 import math
 
-n=50   
-m=50
+n=10   
+m=10
 r=3
 	
  
 def esfera():
-	circulos = []
-	circulo= []
+	circ2 = [] 	
 	for i in range(0,n):
 		teta= i*(math.pi/(n-1)) - math.pi/2 
+		circ1 = []
 		for j in range(0,m):
 			phi= (2*math.pi*j)/(m-1)
 
@@ -21,17 +21,18 @@ def esfera():
 			y = r*math.sin(teta)
 			z = r*math.cos(teta)*math.sin(phi)
 			
-			circulo+=[x,y,z]
-			#glVertex3fv([x,y,z])
-			
-		circulos+=circulo
-		break;
-	print(circulos)
-	glBegin(GL_POINTS)
-	
-	
-	glEnd()
+			circ1 += [[x,y,z]]
 
+		circ2+=[circ1]
+	
+    
+	glBegin(GL_TRIANGLES)
+	for i in range(0,len(circ2)):
+		a= circ2[i]
+		for j in range(-1,len(a)):
+			glVertex3fv(a[j])
+		
+	glEnd()
 
 
        
