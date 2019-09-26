@@ -4,36 +4,69 @@ from OpenGL.GL import *
  
 import math
 
-n=10   
-m=10
+n=30  
+m=30
 r=3
 	
  
 def esfera():
-	circ2 = [] 	
-	for i in range(0,n):
-		teta= i*(math.pi/(n-1)) - math.pi/2 
-		circ1 = []
-		for j in range(0,m):
-			phi= (2*math.pi*j)/(m-1)
+	
+	glBegin(GL_TRIANGLES)
+	for j in range(0,n):
+		phi= (2*math.pi*j)/(m-1)
+		for i in range(0,m):
+			teta= i*(math.pi/(n-1)) - math.pi/2 
 
+			#B
 			x = r*math.cos(teta)*math.cos(phi)
 			y = r*math.sin(teta)
 			z = r*math.cos(teta)*math.sin(phi)
-			
-			circ1 += [[x,y,z]]
+			glColor3f(0,1,0)
+			glVertex3fv([x,y,z])
 
-		circ2+=[circ1]
-	
-    
-	glBegin(GL_TRIANGLES)
-	for i in range(0,len(circ2)):
-		a= circ2[i]
-		for j in range(-1,len(a)):
-			glVertex3fv(a[j])
+			#A
+			x2 = r*math.cos(teta)*math.cos(phi+2*math.pi/(m-1))
+			y2 = r*math.sin(teta)
+			z2 = r*math.cos(teta)*math.sin(phi+2*math.pi/(m-1))
+			glColor3f(1,0,0)
+			glVertex3fv([x2,y2,z2])
+
+			
+			#D
+			x3 = r*math.cos(teta+math.pi/(n-1))*math.cos(phi)
+			y3 = r*math.sin(teta+math.pi/(n-1))
+			z3 = r*math.cos(teta+math.pi/(n-1))*math.sin(phi)
+			glColor3f(0,0,1)
+			glVertex3fv([x3,y3,z3])
+
+
+			#A
+			x4 = r*math.cos(teta)*math.cos(phi+2*math.pi/(m-1))
+			y4 = r*math.sin(teta)
+			z4 = r*math.cos(teta)*math.sin(phi+2*math.pi/(m-1))
+			glColor3f(10,10,0)
+			glVertex3fv([x4,y4,z4])
+
+
+			#D
+			x5 = r*math.cos(teta+math.pi/(n-1))*math.cos(phi)
+			y5 = r*math.sin(teta+math.pi/(n-1))
+			z5 = r*math.cos(teta+math.pi/(n-1))*math.sin(phi)
+			glColor3f(10,0,10)
+			glVertex3fv([x5,y5,z5])
+
+			#C
+			x6 = r*math.cos(teta+math.pi/(n-1))*math.cos(phi+2*math.pi/(m-1))
+			y6 = r*math.sin(teta+math.pi/(n-1))
+			z6 = r*math.cos(teta+math.pi/(n-1))*math.sin(phi+2*math.pi/(m-1))
+			glColor3f(0,1,1)
+			glVertex3fv([x6,y6,z6])
+
+
+			
 		
 	glEnd()
-
+	
 
        
 def desenha():
