@@ -25,7 +25,7 @@ def LoadTextures():
 
     ################################################################################
     glBindTexture(GL_TEXTURE_2D, texture[0])
-    reader = png.Reader(filename='dado.png')
+    reader = png.Reader(filename='textura/dado.png')
     w, h, pixels, metadata = reader.read_flat()
     if(metadata['alpha']):
         modo = GL_RGBA
@@ -90,40 +90,40 @@ def DrawGLScene():
     glTexCoord2f(2.0/3.0, 1.0); glVertex3f(-1.0,  1.0,  1.0)  
     
     # Back Face
-    glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, -1.0, -1.0)    
-    glTexCoord2f(1.0, 1.0); glVertex3f(-1.0,  1.0, -1.0)    
-    glTexCoord2f(0.0, 1.0); glVertex3f( 1.0,  1.0, -1.0)    
-    glTexCoord2f(0.0, 0.0); glVertex3f( 1.0, -1.0, -1.0)   
+    glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0, -1.0)    
+    glTexCoord2f(1.0/3.0, 0.0); glVertex3f(-1.0,  1.0, -1.0)    
+    glTexCoord2f(1.0/3.0, 0.5); glVertex3f( 1.0,  1.0, -1.0)    
+    glTexCoord2f(0.0, 0.5); glVertex3f( 1.0, -1.0, -1.0)   
     
     # Top Face
-    glTexCoord2f(1.0, 0.0); glVertex3f(-1.0,  1.0, -1.0)   
-    glTexCoord2f(1.0, 1.0); glVertex3f(-1.0,  1.0,  1.0)    
-    glTexCoord2f(0.0, 1.0); glVertex3f( 1.0,  1.0,  1.0)    
-    glTexCoord2f(0.0, 0.0); glVertex3f( 1.0,  1.0, -1.0)   
+    glTexCoord2f(1.0/3.0, 0.0); glVertex3f(-1.0,  1.0, -1.0)   
+    glTexCoord2f(2.0/3.0, 0.0); glVertex3f(-1.0,  1.0,  1.0)    
+    glTexCoord2f(2.0/3.0, 0.5); glVertex3f( 1.0,  1.0,  1.0)    
+    glTexCoord2f(1.0/3.0, 0.5); glVertex3f( 1.0,  1.0, -1.0)   
 
     # Bottom Face       
-    glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, -1.0, -1.0)   
-    glTexCoord2f(1.0, 1.0); glVertex3f( 1.0, -1.0, -1.0)   
-    glTexCoord2f(0.0, 1.0); glVertex3f( 1.0, -1.0,  1.0)   
-    glTexCoord2f(0.0, 0.0); glVertex3f(-1.0, -1.0,  1.0)    
+    glTexCoord2f(1.0/3.0, 0.5); glVertex3f(-1.0, -1.0, -1.0)   
+    glTexCoord2f(2.0/3.0, 0.5); glVertex3f( 1.0, -1.0, -1.0)   
+    glTexCoord2f(2.0/3.0, 1.0); glVertex3f( 1.0, -1.0,  1.0)   
+    glTexCoord2f(1.0/3.0, 1.0); glVertex3f(-1.0, -1.0,  1.0)    
     
     # Right face
-    glTexCoord2f(1.0, 0.0); glVertex3f( 1.0, -1.0, -1.0)    
-    glTexCoord2f(1.0, 1.0); glVertex3f( 1.0,  1.0, -1.0)   
-    glTexCoord2f(0.0, 1.0); glVertex3f( 1.0,  1.0,  1.0)    
-    glTexCoord2f(0.0, 0.0); glVertex3f( 1.0, -1.0,  1.0)  
+    glTexCoord2f(2.0/3.0, 0.0); glVertex3f( 1.0, -1.0, -1.0)    
+    glTexCoord2f(1.0, 0.0); glVertex3f( 1.0,  1.0, -1.0)   
+    glTexCoord2f(1.0, 0.5); glVertex3f( 1.0,  1.0,  1.0)    
+    glTexCoord2f(2.0/3.0, 0.5); glVertex3f( 1.0, -1.0,  1.0)  
     
     # Left Face
-    glTexCoord2f(1.0, 0.0); glVertex3f(-1.0, -1.0, -1.0)  
-    glTexCoord2f(1.0, 1.0); glVertex3f(-1.0, -1.0,  1.0)    
-    glTexCoord2f(0.0, 1.0); glVertex3f(-1.0,  1.0,  1.0)   
-    glTexCoord2f(0.0, 0.0); glVertex3f(-1.0,  1.0, -1.0)   
+    glTexCoord2f(0.0, 0.5); glVertex3f(-1.0, -1.0, -1.0)  
+    glTexCoord2f(1.0/3.0, 0.5); glVertex3f(-1.0, -1.0,  1.0)    
+    glTexCoord2f(1.0/3.0, 1.0); glVertex3f(-1.0,  1.0,  1.0)   
+    glTexCoord2f(0.0, 1.0); glVertex3f(-1.0,  1.0, -1.0)   
     
     glEnd()                # Done Drawing The Cube
     
-    xrot  = xrot + 0.01                # X rotation
-    yrot = yrot + 0.01                 # Y rotation
-    zrot = zrot + 0.01                 # Z rotation
+    xrot  = xrot + 0.35                # X rotation
+    yrot = yrot + 0.30                # Y rotation
+    zrot = zrot + 0.2               # Z rotation
 
     glutSwapBuffers()
 
