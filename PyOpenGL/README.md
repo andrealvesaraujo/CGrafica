@@ -27,7 +27,7 @@ Só funcionam para python 2+
 	Para rodar execute o comando: python prismas.py
 
 # 4.Esfera Pontilhada
-	Esse programa mostra uma esfera de 50 pontos no "n" e "m" girando em torno do eixo z.
+	Esse programa mostra uma esfera pontilhada  girando em torno do eixo z com 50 pontos nos valores "n" e "m".
 
 	Os parametros que podem ser variados estão no topo do codigo e são:
 	1.n --> Quantidade de pontos que varia com teta
@@ -35,3 +35,13 @@ Só funcionam para python 2+
 	3.r --> Raio da circunferencias.
 
 	Para rodar execute o comando: python esferaPontilhado.py
+
+# 5.Esfera Detalhamento
+	Esse programa mostra uma esfera feita por triangulos com discretização de "n" e "m" pelo valor 15 com raio 3 girando em torno do eixo z. 
+
+	Os parametros que podem ser variados estão no topo do codigo e são:
+	1.n --> Valor de discretização que varia com teta
+	2.m --> Valor de discretização que varia com phi
+	3.r --> Raio da circunferencias.
+
+	Para rodar execute o comando: python esfera_detalhamento.py

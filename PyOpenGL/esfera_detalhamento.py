@@ -4,8 +4,8 @@ from OpenGL.GL import *
  
 import math
 
-n=30  
-m=30
+n=15  
+m=15
 r=3
 	
  
