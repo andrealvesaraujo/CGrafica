@@ -150,7 +150,7 @@ def DrawGLScene():
 	glEnd()
     
 	#xrot  = xrot + 0.35                # X rotation
-	yrot = yrot + 0.30                # Y rotation
+	yrot = yrot + 0.60                # Y rotation
 	#zrot = zrot + 0.2               # Z rotation
 
 	glutSwapBuffers()
