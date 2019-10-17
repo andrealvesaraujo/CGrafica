@@ -3,53 +3,13 @@ from OpenGL.GLU import *
 from OpenGL.GL import *
 from math import *
 import sys
+import math
 
-vertices = (
-	( 1,-1,-1),
-	( 1, 1,-1),
-	(-1, 1,-1),
-	(-1,-1,-1),
-	( 1,-1, 1),
-	( 1, 1, 1),
-	(-1,-1, 1),
-	(-1, 1, 1),
-	)
+h=2
+n=10
+r=2
 
-linhas = (
-	(0,1),
-	(0,3),
-	(0,4),
-	(2,1),
-	(2,3),
-	(2,7),
-	(6,3),
-	(6,4),
-	(6,7),
-	(5,1),
-	(5,4),
-	(5,7),
-	)
-
-faces = (
-	(0,1,2,3),
-	(3,2,7,6),
-	(6,7,5,4),
-	(4,5,1,0),
-	(1,5,7,2),
-	(4,0,3,6)
-	)
-
-#https://www.opengl.org/wiki/Calculating_a_Surface_Normal
-#Begin Function CalculateSurfaceNormal (Input Triangle) Returns Vector
-#  Set Vector U to (Triangle.p2 minus Triangle.p1)
-#  Set Vector V to (Triangle.p3 minus Triangle.p1)
-#  Set Normal.x to (multiply U.y by V.z) minus (multiply U.z by V.y)
-#  Set Normal.y to (multiply U.z by V.x) minus (multiply U.x by V.z)
-#  Set Normal.z to (multiply U.x by V.y) minus (multiply U.y by V.x)
-#  Returning Normal
-#End Function
-
-def calculaNormalFace(face):
+def calculaNormalFace(face,vertices):
     x = 0
     y = 1
     z = 2
@@ -62,18 +22,52 @@ def calculaNormalFace(face):
     NLength = sqrt(N[x]*N[x]+N[y]*N[y]+N[z]*N[z])
     return ( N[x]/NLength, N[y]/NLength, N[z]/NLength)
 
-def Cubo():
+def Prisma():
+	
+	
+	vertices = []
+	a = 2*math.pi/n
+	for i in range(0,n):
+		x = r*math.cos(i*a)
+		y = 0
+		z = r*math.sin(i*a)
+		vertices += [[x,y,z]] #prencheu a base de baixo
+	for i in range(0,n):
+		x = r*math.cos(i*a)
+		y = h
+		z = r*math.sin(i*a)
+		vertices += [[x,y,z]] #prencheu a base de cima
+
+	faces = []
+	for i in range(0,n):
+		if(i==n-1):
+		    faces += [[i,0,n,2*n-1]]
+		else:
+		    faces += [[i,i+1,n+i+1,n+i]]
+
+	k=0
 	glBegin(GL_QUADS)
 	for face in faces:
-		glNormal3fv(calculaNormalFace(face))
-		for vertex in face:
-			glVertex3fv(vertices[vertex])
+		glNormal3fv(calculaNormalFace(face,vertices))
+		k += 1
+		for v in face:
+		    glVertex3fv(vertices[v])
+	glEnd()
+
+	glBegin(GL_POLYGON)
+	for v in range(0,n):
+		glVertex3fv(vertices[v])
+	glEnd()
+
+	glBegin(GL_POLYGON)
+	for x in range(n,2*n):
+		glVertex3fv(vertices[x])
 	glEnd()
 
 def display():
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-    glRotatef(2,1,3,0)
-    Cubo()
+    glRotatef(2,5,4,2)
+    Prisma()
     glutSwapBuffers()
 
 def timer(i):
@@ -90,13 +84,13 @@ def reshape(w,h):
 
 def init():
 #    mat_ambient = (0.0, 0.0, 0.5, 1.0)
-    mat_ambient = (0.4, 0.0, 0.0, 1.0)
+    mat_ambient = (0.8, 0.0, 0.0, 1.0)
     mat_diffuse = (1.0, 0.0, 0.0, 1.0)
-    mat_specular = (0.0, 1.0, 0.0, 1.0)
-    mat_shininess = (50,)
-    light_position = (0, 0, 0)
+    mat_specular = (1.0, 1.0, 1.0, 1.0)
+    mat_shininess = (100,)
+    light_position = (0, 8, 0)
     glClearColor(0.0,0.0,0.0,0.0)
-    glShadeModel(GL_FLAT)
+    glShadeModel(GL_SMOOTH)
 
     glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient)
     glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse)
@@ -112,7 +106,7 @@ def main():
     glutInit(sys.argv)
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH | GLUT_MULTISAMPLE)
     glutInitWindowSize(800,600)
-    glutCreateWindow("Cubo")
+    glutCreateWindow("PrismaIluminada")
     glutReshapeFunc(reshape)
     glutDisplayFunc(display)
     glutTimerFunc(50,timer,1)
