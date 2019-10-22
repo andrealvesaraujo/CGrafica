@@ -30,7 +30,6 @@ def grid3D():
 	deltaX=(xf-xo)/nx	
 	y=yo
 	
-	print xf, xo, yf, yo, deltaX, deltaY
 	while y< yf:
 		x=xo
 		glBegin(GL_QUAD_STRIP)

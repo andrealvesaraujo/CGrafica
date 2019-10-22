@@ -45,3 +45,17 @@ Só funcionam para python 2+
 	3.r --> Raio da circunferencias.
 
 	Para rodar execute o comando: python esfera_detalhamento.py
+	
+# 6. Funcoes 
+
+# 7. Dados
+
+# 8. Terra Esfera
+
+# 9. Terra Plana
+
+# 10. Piramide com Luz
+
+# 11. Prisma com Luz
+
+# 12. Esfera com Luz
