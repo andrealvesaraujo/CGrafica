@@ -18,8 +18,6 @@ def paraboloide(x,y):
 		
 def paraboloide_hiperbolico(x,y):
  	return (x**2 - y**2)*0.3
-def Stonehange(x,y):
-	return 1/math.sin(x**2 + y**2)*0.2	   	
 
 def grid3D():
 	deltaY=(yf-yo)/ny
@@ -38,12 +36,9 @@ def grid3D():
 			if(op == 1):
 				glVertex3f(x,y,paraboloide(x,y)) 
 				glVertex3f(x,y+deltaY,paraboloide(x,y+deltaY))	
-			elif(op == 2):
+			else:
 				glVertex3f(x,y,paraboloide_hiperbolico(x,y))
 				glVertex3f(x,y+deltaY,paraboloide_hiperbolico(x,y+deltaY))
-			else:
-				glVertex3f(x,y,Stonehange(x,y))
-				glVertex3f(x,y+deltaY,Stonehange(x,y+deltaY))
 			
 			x+=deltaX	
 		glEnd()

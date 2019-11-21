@@ -47,6 +47,21 @@ Só funcionam para python 2+
 	Para rodar execute o comando: python esfera_detalhamento.py
 	
 # 6. Funcoes 
+	Esse programa mostra um gráfico uma função matemática escolhida por linha de comando.
+
+	Os parametros que podem ser variados estão no topo do codigo e são:
+	1.xo --> Valor da variável "x" inicial da fórmula
+	2.xf --> Valor da variável "x" final da fórmula
+	3.yo --> Valor da variável "y" inicial da fórmula
+	4.yf --> Valor da variável "y" final da fórmula
+	5.nx --> Valor de discretização em x
+	6.ny --> Valor de discretização em y
+
+	Passe por linha de comando a opção de função que deseja ver. As opções estão abaixo:
+	1 --> Paraboloide eliptico (opção definida como padrão)
+	2 --> Paraboloide hiperbolico
+	
+	Para rodar execute o comando: python Funcoes.py numero_opcao
 
 # 7. Dados
 
