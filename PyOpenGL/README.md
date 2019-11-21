@@ -82,10 +82,33 @@ Só funcionam para python 2+
 
 # 9. Piramide com Luz
 
-	Esse programa mostra uma piramide de base quadrada girando com luz aplicada nela.
+	Esse programa mostra uma piramide de base quadrada girando.
+	Nessa piramide foi aplicado luz sobre ela.
 	
 	Para rodar execute o comando: python piramide_luz.py
 
 # 10. Prisma com Luz
+	
+	Esse programa mostra uma prisma girando em torno do eixo z. 
+	Nesse prisma foi aplicado luz sobre ela.
+
+	Os parametros que podem ser variados estão no topo do codigo e são:
+	1.h --> Altura do prisma
+	2.n --> Número de lados da base
+	3.r --> Raio da circunferencias.
+
+	Para rodar execute o comando: python prisma_luz.py
 
 # 11. Esfera com Luz
+
+	Esse programa mostra uma esfera feita por triangulos com discretização de "n" e "m" pelo valor 10 com raio 2 girando em torno do eixo z.
+	Nessa esfera foi aplicado luz sobre ela. 
+
+	Os parametros que podem ser variados são:
+	1.n --> Valor de discretização que varia com teta
+	2.m --> Valor de discretização que varia com phi
+	3.r --> Raio da circunferencias.
+
+	Para mudar o valor padrão só ir na linha 66 do codigo e mudar o valor do método esfera().
+
+	Para rodar execute o comando: python esfera_luz.py
