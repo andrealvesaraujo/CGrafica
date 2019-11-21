@@ -52,10 +52,8 @@ Só funcionam para python 2+
 
 # 8. Terra Esfera
 
-# 9. Terra Plana
+# 9. Piramide com Luz
 
-# 10. Piramide com Luz
+# 10. Prisma com Luz
 
-# 11. Prisma com Luz
-
-# 12. Esfera com Luz
+# 11. Esfera com Luz

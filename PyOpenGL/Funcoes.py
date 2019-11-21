@@ -2,13 +2,13 @@ from OpenGL.GLUT import *
 from OpenGL.GLU import *
 from OpenGL.GL import *
  
- #http://www.fractarte.com.br/wolframalpha/3d-equations.php
 import math
+import sys
 
-xo= -5
-xf= 5
-yo= -5
-yf= 5
+xo= -3
+xf= 3
+yo= -3
+yf= 3
 nx=50.0
 ny=50.0
 
@@ -18,43 +18,43 @@ def paraboloide(x,y):
 		
 def paraboloide_hiperbolico(x,y):
  	return (x**2 - y**2)*0.3
-
-def f1(x,y):
-	return math.tan(math.cos(x+y)) 
 def Stonehange(x,y):
 	return 1/math.sin(x**2 + y**2)*0.2	   	
-def f2(x,y): 
-	return math.sin(x**2+y**2)*2.0
+
 def grid3D():
 	deltaY=(yf-yo)/ny
 	deltaX=(xf-xo)/nx	
 	y=yo
 	
+	if( len(sys.argv) ==2):
+		op = int (sys.argv[1]);
+	else:
+		op = 1
 	while y< yf:
 		x=xo
 		glBegin(GL_QUAD_STRIP)
 		while x<xf:
 			glColor3f(1-abs(2.0*x)/(xf-xo),1-abs(2.0*y)/(yf-yo),0)
-			glVertex3f(x,y,paraboloide_hiperbolico(x,y)) 
-			glVertex3f(x,y+deltaY,paraboloide_hiperbolico(x,y+deltaY))	
-			
-			#glVertex3f(x,y,f2(x,y))
-			#glVertex3f(x,y+deltaY,f2(x,y+deltaY))
-			
+			if(op == 1):
+				glVertex3f(x,y,paraboloide(x,y)) 
+				glVertex3f(x,y+deltaY,paraboloide(x,y+deltaY))	
+			elif(op == 2):
+				glVertex3f(x,y,paraboloide_hiperbolico(x,y))
+				glVertex3f(x,y+deltaY,paraboloide_hiperbolico(x,y+deltaY))
+			else:
+				glVertex3f(x,y,Stonehange(x,y))
+				glVertex3f(x,y+deltaY,Stonehange(x,y+deltaY))
 			
 			x+=deltaX	
 		glEnd()
 		y+=deltaY
-       
 def desenha():
     global a
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT)
-    
     glRotatef(1,-1,0,0)
     grid3D()
     glutSwapBuffers()
     return
-    
 def timer(i):
     glutPostRedisplay()
     glutTimerFunc(50,timer,1)
