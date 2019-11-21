@@ -71,6 +71,15 @@ Só funcionam para python 2+
 
 # 8. Terra Esfera
 
+	Esse programa mostra uma esfera com textura da terra girando em torno do eixo z. 
+
+	Os parametros que podem ser variados estão no topo do codigo e são:
+	1.n --> Valor de discretização da esfera que varia com teta
+	2.m --> Valor de discretização da esfera que varia com phi
+	3.r --> Raio da circunferencia.
+
+	Para rodar execute o comando: python esfera_terra.py
+
 # 9. Piramide com Luz
 
 # 10. Prisma com Luz
