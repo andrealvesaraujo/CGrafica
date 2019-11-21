@@ -82,6 +82,10 @@ Só funcionam para python 2+
 
 # 9. Piramide com Luz
 
+	Esse programa mostra uma piramide de base quadrada girando com luz aplicada nela.
+	
+	Para rodar execute o comando: python piramide_luz.py
+
 # 10. Prisma com Luz
 
 # 11. Esfera com Luz
