@@ -64,6 +64,10 @@ Só funcionam para python 2+
 	Para rodar execute o comando: python Funcoes.py numero_opcao
 
 # 7. Dados
+	
+	Esse programa mostra um cubo com textura de 6 lados de um dado girando.  
+
+	Para rodar execute o comando: python Dados.py
 
 # 8. Terra Esfera
 
