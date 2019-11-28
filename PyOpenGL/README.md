@@ -112,3 +112,10 @@ Só funcionam para python 2+
 	Para mudar o valor padrão só ir na linha 66 do codigo e mudar o valor do método esfera().
 
 	Para rodar execute o comando: python esfera_luz.py
+	
+
+# 12. Trabalho Final
+
+	
+	
+		
