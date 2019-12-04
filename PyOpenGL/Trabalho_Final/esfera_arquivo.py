@@ -61,7 +61,7 @@ for j in range(0,n):
 		else:
 			faces += [[0,i,(i+1)]]
 
-with open('esfera_resultado.ply', 'w') as f:
+with open('esfera_resultado_media.ply', 'w') as f:
     
 	f.write("ply\n")
 	f.write("format ascii 1.0\n")
