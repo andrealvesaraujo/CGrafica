@@ -1,7 +1,7 @@
 import math
 
-n=15  
-m=15
+n=25  
+m=25
 r=3
 	
 vertices = []
@@ -55,6 +55,11 @@ for j in range(0,n):
 		
 		vertices = vertices + [[x6,y6,z6]]
 
+	for i in range(1,(len(vertices)+1)):
+		if(i==len(vertices)):
+			faces += [[0,i,1]]
+		else:
+			faces += [[0,i,(i+1)]]
 
 with open('esfera_resultado.ply', 'w') as f:
     
@@ -65,22 +70,12 @@ with open('esfera_resultado.ply', 'w') as f:
 	f.write("property float x\n")
 	f.write("property float y\n")
 	f.write("property float z\n")
-
-	f.write("element face \n")
+	f.write("element face " + str(len(faces)) + "\n")
 	f.write("property list uchar int vertex_indices\n")
 	f.write("end_header\n")
 
 	for i in range(0,len(vertices)):
 		f.write(str(vertices[i][0]) +" " + str(vertices[i][1]) +" " + str(vertices[i][2]) + "\n")
+	for i in range(0,len(faces)):
+		f.write("3 " + str(faces[i][0]) +" " + str(faces[i][1]) +" " + str(faces[i][2]) +  "\n")
 
-
-'''ply
-format ascii 1.0
-comment zipper output
-element vertex 8
-property float x
-property float y
-property float z
-element face 12
-property list uchar int vertex_indices
-end_header'''
